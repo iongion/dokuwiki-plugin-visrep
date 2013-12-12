@@ -1,8 +1,8 @@
 <?php
 
-$meta['path_block'] = array('string');
-$meta['path_sequence'] = array('string');
-$meta['path_activity'] = array('string');
-$meta['path_network'] = array('string');
-$meta['path_graphviz'] = array('string');
+$conf['path_blockdiag'] = array('string');
+$conf['path_seqdiag'] = array('string');
+$conf['path_actdiag'] = array('string');
+$conf['path_nwdiag'] = array('string');
+$conf['path_graphviz'] = array('string');
 
