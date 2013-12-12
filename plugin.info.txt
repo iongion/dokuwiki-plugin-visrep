@@ -1,0 +1,8 @@
+base    visrep
+author  Ionut Stoica
+email   stoica.ionut@gmail.com
+date    2013-12-09
+name    Visual Representation Plugin
+desc    Create graph images from visrep language
+url     http://www.dokuwiki.org/plugin:visrep
+

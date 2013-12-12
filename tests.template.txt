@@ -1,0 +1,108 @@
+====== Keemotion knowledge base ======
+
+  * Projects
+    * Requirements
+    * Installation instructions
+    * Usage instructions
+  * Documentation
+    * FAQs
+    * HOWTOs
+
+
+Keemotion Wiki
+
+<visrep>
+seqdiag {
+  // edge label
+  A -> B [label = "call"];
+  A <- B [label = "return"];
+
+  // diagonal edge
+  A -> B [diagonal, label = "diagonal edge"];
+  A <- B [diagonal, label = "return diagonal edge"];
+
+  // color of edge
+  A -> B [label = "colored label", color = red];
+
+  // failed edge
+  A -> B [label = "failed edge", failed];
+}
+</visrep>
+
+<jssequencediagram>
+Alice->Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob-->Alice: I am good thanks!
+</jssequencediagram>
+
+
+
+<graphviz dot center>
+digraph finite_state_machine {
+  rankdir=LR;
+  nodesep=.3;
+  node [shape = doublecircle]; LR_0;
+  node [shape = circle]; LR_2;
+  node [shape = record];
+
+  LR_0 [ label = "Pointguard", fontname=Helvetica, fontcolor=red ];
+  LR_1 [ label = "Director", style="rounded,filled", shape=diamond ];
+  LR_2 [ label = "Keecoach" ];
+  LR_3 [ label = "Webadmin", fixedsize=true, fontsize=8 ];
+  LR_4 [ label = "Media Dispatcher", fixedsize=true, fontsize=8 ];
+  LR_5 [ label = "Media Publisher", fixedsize=true, fontsize=8 ];
+  LR_6 [ label = "Playlist Generator", fixedsize=true, fontsize=8 ];
+  LR_7 [ label = "Token Vending Machine", fixedsize=true, fontsize=8 ];
+  LR_8 [ label = "Keecast", fixedsize=true, fontsize=8 ];
+
+  STRUCT_AWS [shape=record, label="<f0> S3|<f1> EC2|<f2> SQS|<f3> SNS|<f4> IAM|<f5> DynamoDB", fontsize=10 ];
+  STRUCT_JENKINS [shape=record, label="<f0> Jenkins Status", fontsize=8 ];
+
+  subgraph cluster0 {
+  
+    style=filled;
+    color=lightgrey;
+
+    LR_1 -> LR_0;
+    LR_2 -> LR_0;
+    LR_3 -> LR_0;
+    LR_4 -> LR_0;
+    LR_4 -> LR_5;
+    LR_5 -> LR_0;
+    LR_6 -> LR_0;
+    LR_7 -> LR_0;
+    LR_8 -> LR_0;
+    LR_2 -> LR_6;
+    LR_2 -> LR_7;
+    LR_1 -> LR_4;
+    LR_3 -> LR_4;
+
+    label = "Keemotion";
+  }
+  
+  subgraph cluster1 {
+  
+    style=filled;
+
+    LR_1 -> STRUCT_AWS:f0 [ style=dashed, color=red ];
+    LR_2 -> STRUCT_AWS:f0 [ style=dashed, color=red ];
+    LR_5 -> STRUCT_AWS:f0 [ style=dashed, color=red ];
+    LR_6 -> STRUCT_AWS:f0 [ style=dashed, color=red ];
+ 
+    LR_4 -> STRUCT_AWS:f1 [ style=dashed, color=blue ];
+    LR_4 -> STRUCT_AWS:f2 [ style=dashed, color=green ];
+    LR_5 -> STRUCT_AWS:f1 [ style=dashed, color=blue ];
+    LR_5 -> STRUCT_AWS:f2 [ style=dashed, color=green ];
+    LR_5 -> STRUCT_AWS:f5 [ style=dashed, color=cyan ];
+
+    LR_6 -> STRUCT_AWS:f0 [ style=dashed, color=red ];
+    LR_6 -> STRUCT_AWS:f5 [ style=dashed, color=cyan ];
+  
+    LR_7 -> STRUCT_AWS:f4 [ style=dashed, color=magenta ];
+
+    label = "Amazon Web Services";
+  }
+
+  STRUCT_JENKINS:f0 -> STRUCT_AWS:f3 [ style=dashed];
+}
+</graphviz>
