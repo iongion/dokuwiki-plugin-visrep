@@ -105,9 +105,12 @@ class syntax_plugin_visrep extends DokuWiki_Syntax_Plugin {
     function render($format, &$R, $data) {
         if($format == 'xhtml') {
             $attrs = array();
-            
-            $url = DOKU_BASE.'lib/plugins/visrep/img.php?'.buildURLparams($data);
-            
+
+            if(is_a($R,'renderer_plugin_dw2pdf')){
+              $url = 'dw2pdf://'.$this->_imgfile($data);
+            } else {
+              $url = DOKU_BASE.'lib/plugins/visrep/img.php?'.buildURLparams($data);
+            }
             
             foreach ($data as $k=>$v) {
               if ($k == 'md5') continue;
