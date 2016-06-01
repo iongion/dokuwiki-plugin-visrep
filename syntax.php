@@ -83,6 +83,8 @@ class syntax_plugin_visrep extends DokuWiki_Syntax_Plugin {
         case 'seqdiag':
         case 'actdiag':
         case 'nwdiag':
+        case 'rackdiag':
+        case 'packetdiag':
           $data = sprintf("%s {\n%s\n}", $attrs['data-engine'], $data);
           break;
         default:
@@ -194,7 +196,7 @@ class syntax_plugin_visrep extends DokuWiki_Syntax_Plugin {
     
     
     function _isBlockDiag($engine) {
-      return in_array($engine, array('seqdiag', 'blockdiag', 'actdiag', 'nwdiag'));
+      return in_array($engine, array('seqdiag', 'blockdiag', 'actdiag', 'nwdiag', 'rackdiag', 'packetdiag'));
     }
 
 }
